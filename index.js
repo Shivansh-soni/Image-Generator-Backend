@@ -8,7 +8,12 @@ const app = express();
 //Enable body parser
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://cute-cyan-adder.cyclic.app",
+    methods: ["GET", "POST"],
+  })
+);
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/openai", require("./routes/OpenaiRoutes"));
